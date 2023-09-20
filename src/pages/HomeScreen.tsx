@@ -1,24 +1,10 @@
 // src/screens/HomeScreen.tsx
 import React from 'react';
-import {View, Button} from 'react-native';
-import {StackNavigationProp} from '@react-navigation/stack';
-import {RootStackParamList} from '../types';
 
-type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'home'>;
+import MainComponents from '../Componenets/MainComponents';
 
-interface HomeScreenProps {
-  navigation: HomeScreenNavigationProp;
-}
-
-function HomeScreen({navigation}: HomeScreenProps) {
-  return (
-    <View>
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate('search')}
-      />
-    </View>
-  );
+function HomeScreen() {
+  return <MainComponents type="home" />;
 }
 
 export default HomeScreen;

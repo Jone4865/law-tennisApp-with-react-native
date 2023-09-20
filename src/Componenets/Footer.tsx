@@ -2,48 +2,50 @@ import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
 
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import Octicons from 'react-native-vector-icons/Octicons';
+import Icon from 'react-native-vector-icons/AntDesign';
 import {theme} from '../../colors';
 import {RootStackParamList} from '../types';
 
 function Footer() {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   const onPressHandle = (pageName: keyof RootStackParamList) => {
-    navigation.navigate(pageName); // 클릭한 페이지 이름으로 이동
+    navigation.navigate(pageName);
   };
 
   return (
     <View style={styles.container}>
-      <AntDesign
+      <Icon
         name="home"
         size={22}
-        color={theme.color}
+        color={theme.textColor}
         onPress={() => onPressHandle('home')}
       />
-      <AntDesign
-        name="search1"
+      <Icon
+        name="camerao"
         size={22}
-        color={theme.color}
-        onPress={() => onPressHandle('search')}
+        color={theme.textColor}
+        onPress={() => onPressHandle('detail')}
       />
-      <Octicons
-        name="three-bars"
+      <Icon
+        name="user"
         size={22}
-        color={theme.color}
-        onPress={() => onPressHandle('list')}
+        color={theme.textColor}
+        onPress={() => onPressHandle('user')}
       />
-      <AntDesign name="user" size={22} color={theme.color} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
     flexDirection: 'row',
     justifyContent: 'space-around',
     paddingVertical: 20,
-    color: theme.color,
+    color: theme.textColor,
+    backgroundColor: theme.bg,
   },
 });
 

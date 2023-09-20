@@ -1,4 +1,7 @@
 export const theme = {
   bg: 'black',
-  color: 'skyblue',
+  textColor: 'white',
+  radius: 7,
+  titleFontSize: 16,
+  contentFontSize: 14,
 };
