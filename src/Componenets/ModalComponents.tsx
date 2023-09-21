@@ -9,6 +9,7 @@ type Props = {
   closeTitle: string;
   confirmTitle: string;
   content: string;
+  iconVisible?: boolean;
   closeModalHandle: () => void;
   confirmHandle: () => void;
 };
@@ -20,14 +21,23 @@ function ModalComponents({
   content,
   closeModalHandle,
   confirmHandle,
+  iconVisible,
 }: Props) {
   return (
     <ReactNativeModal isVisible={isVisible}>
       <View style={styles.container}>
         <Text style={styles.text}>{content}</Text>
         <View style={styles.btnContainer}>
-          <Btn title={confirmTitle} iconName="check" onPress={confirmHandle} />
-          <Btn title={closeTitle} iconName="close" onPress={closeModalHandle} />
+          <Btn
+            title={confirmTitle}
+            iconName={iconVisible ? 'check' : undefined}
+            onPress={confirmHandle}
+          />
+          <Btn
+            title={closeTitle}
+            iconName={iconVisible ? 'close' : undefined}
+            onPress={closeModalHandle}
+          />
         </View>
       </View>
     </ReactNativeModal>

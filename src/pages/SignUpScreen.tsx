@@ -1,8 +1,13 @@
 import React, {useState} from 'react';
-import {View, Text, TextInput, StyleSheet} from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
 import Btn from '../Componenets/Btn';
 import {theme} from '../../colors';
-import {TouchableOpacity} from 'react-native-gesture-handler';
 
 interface SignUpScreenProps {
   navigation: any;

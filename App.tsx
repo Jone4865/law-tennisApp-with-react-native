@@ -7,14 +7,14 @@ import HomeScreen from './src/pages/HomeScreen';
 
 import UserScreen from './src/pages/UserScreen';
 import AddScreen from './src/pages/AddScreen';
-import DetailScreen from './src/pages/DetailScreen';
 import {theme} from './colors';
-import EditScreen from './src/pages/EditScreen';
 import SignInScreen from './src/pages/SignInScreen';
 import SignUpScreen from './src/pages/SignUpScreen';
 import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import Footer from './src/Componenets/Footer';
+import SignOutScreen from './src/pages/SignOutScreen';
+import VerificationScreen from './src/pages/VerificationScreen';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -45,24 +45,57 @@ function App() {
         }}>
         <Stack.Screen
           name="home"
+          key="home"
           component={HomeScreen}
           options={{title: '홈', headerLeft: () => null}}
+          initialParams={{
+            type: 'home',
+          }}
         />
         <Stack.Screen
+          name="join"
+          key="join"
+          component={HomeScreen}
+          options={({navigation}: {navigation: any}) => ({
+            title: '참여목록',
+            headerLeft: () => renderCustomBackButton(navigation),
+          })}
+          initialParams={{
+            type: 'join',
+          }}
+        />
+        <Stack.Screen
+          name="create"
+          key="create"
+          component={HomeScreen}
+          options={({navigation}: {navigation: any}) => ({
+            title: '작성목록',
+            headerLeft: () => renderCustomBackButton(navigation),
+          })}
+          initialParams={{
+            type: 'create',
+          }}
+        />
+
+        <Stack.Screen
           name="signin"
+          key="signin"
           component={SignInScreen}
           options={{title: '로그인', headerLeft: () => null}}
         />
         <Stack.Screen
           name="signup"
+          key="signup"
           component={SignUpScreen}
           options={({navigation}: {navigation: any}) => ({
             title: '회원가입',
             headerLeft: () => renderCustomBackButton(navigation),
           })}
         />
+
         <Stack.Screen
           name="add"
+          key="add"
           component={AddScreen}
           options={({navigation}: {navigation: any}) => ({
             title: '등록하기',
@@ -74,7 +107,8 @@ function App() {
         />
         <Stack.Screen
           name="detail"
-          component={DetailScreen}
+          key="detail"
+          component={AddScreen}
           options={({navigation}: {navigation: any}) => ({
             title: '상세보기',
             headerLeft: () => renderCustomBackButton(navigation),
@@ -83,18 +117,41 @@ function App() {
         />
         <Stack.Screen
           name="edit"
-          component={EditScreen}
+          key="edit"
+          component={AddScreen}
           options={({navigation}: {navigation: any}) => ({
             title: '수정하기',
             headerLeft: () => renderCustomBackButton(navigation),
           })}
           initialParams={{type: 'edit'}}
         />
+
         <Stack.Screen
           name="user"
+          key="user"
           component={UserScreen}
           options={({navigation}: {navigation: any}) => ({
             title: '내정보',
+            headerLeft: () => renderCustomBackButton(navigation),
+          })}
+        />
+
+        <Stack.Screen
+          name="signout"
+          key="signout"
+          component={SignOutScreen}
+          options={({navigation}: {navigation: any}) => ({
+            title: '회원탈퇴',
+            headerLeft: () => renderCustomBackButton(navigation),
+          })}
+        />
+
+        <Stack.Screen
+          name="verification"
+          key="verification"
+          component={VerificationScreen}
+          options={({navigation}: {navigation: any}) => ({
+            title: '본인인증',
             headerLeft: () => renderCustomBackButton(navigation),
           })}
         />

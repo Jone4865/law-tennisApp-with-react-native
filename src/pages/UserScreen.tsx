@@ -13,10 +13,10 @@ type Data = {
 
 function UserScreen({navigation}: UserScreenProps) {
   const [isToggled, setIsToggled] = useState(false);
-  const [myInfo, setMyInfo] = useState<Data>();
+  const [myInfo] = useState<Data>();
   // const [isSign, setIsSign] = useState(false);
   const onClickHandle = (
-    location: 'joinlist' | 'makelist' | 'signin' | 'signout',
+    location: 'join' | 'create' | 'signin' | 'signout',
   ) => {
     if (location === 'signin') {
       console.log('로그아웃 시키기');
@@ -40,7 +40,9 @@ function UserScreen({navigation}: UserScreenProps) {
               </View>
             </View>
           ) : (
-            <TouchableOpacity style={styles.btn}>
+            <TouchableOpacity
+              style={styles.btn}
+              onPress={() => navigation.navigate('verification')}>
               <Text style={styles.text}>휴대폰 인증</Text>
             </TouchableOpacity>
           )}
@@ -49,12 +51,12 @@ function UserScreen({navigation}: UserScreenProps) {
       </View>
       <TouchableOpacity
         style={styles.btns}
-        onPress={() => onClickHandle('joinlist')}>
+        onPress={() => onClickHandle('join')}>
         <Text style={styles.text}>참여목록</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.btns}
-        onPress={() => onClickHandle('makelist')}>
+        onPress={() => onClickHandle('create')}>
         <Text style={styles.text}>작성목록</Text>
       </TouchableOpacity>
       <View style={styles.btns}>

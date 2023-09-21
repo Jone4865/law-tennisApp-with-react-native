@@ -6,12 +6,16 @@ import {theme} from '../../colors';
 type Props = {
   title: string;
   iconName?: string;
+  disabled?: boolean;
   onPress: () => void;
 };
 
-function Btn({title, iconName, onPress}: Props) {
+function Btn({title, iconName, onPress, disabled}: Props) {
   return (
-    <TouchableOpacity onPress={onPress} style={styles.container}>
+    <TouchableOpacity
+      disabled={disabled ? true : false}
+      onPress={onPress}
+      style={{...styles.container, opacity: disabled ? 0.3 : 1}}>
       {iconName && <Icon style={styles.icon} name={iconName} />}
       <Text style={styles.text}>{title}</Text>
     </TouchableOpacity>

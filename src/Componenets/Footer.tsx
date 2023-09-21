@@ -24,7 +24,7 @@ function Footer() {
         name="camerao"
         size={22}
         color={theme.textColor}
-        onPress={() => onPressHandle('detail')}
+        onPress={() => onPressHandle('create')}
       />
       <Icon
         name="user"
